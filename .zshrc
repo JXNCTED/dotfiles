@@ -70,7 +70,17 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+	  extract
+	  zsh-autosuggestions
+  	zsh-syntax-highlighting
+	  zsh-vi-mode
+	  magic-enter
+	  z
+  	thefuck
+	  you-should-use
+	)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,8 +112,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+eval $(thefuck --alias)
 alias lg='lazygit'
-source /opt/ros/noetic/setup.zsh
 
 # setup ccache
 export CC="/usr/lib/ccache/gcc"
@@ -112,7 +123,10 @@ export CCACHE_DIR="$HOME/.cache/ccache/"
 alias dddbuild='catkin_make -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
 alias nvide='neovide --fork '
+alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+dotfiles config --local status.showUntrackedFiles no
 
-export PATH=/usr/local/cuda-12.5/bin:$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+. "$HOME/.cargo/env"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
