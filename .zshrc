@@ -71,15 +71,10 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    	  git
 	  extract
-	  zsh-autosuggestions
-  	zsh-syntax-highlighting
-	  zsh-vi-mode
 	  magic-enter
 	  z
-  	thefuck
-	  you-should-use
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -113,13 +108,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval $(thefuck --alias)
 alias lg='lazygit'
 
 # setup ccache
-export CC="/usr/lib/ccache/gcc"
-export CXX="/usr/lib/ccache/g++"
-export CCACHE_DIR="$HOME/.cache/ccache/"
+# export CC="/usr/lib/ccache/gcc"
+# export CXX="/usr/lib/ccache/g++"
+# export CCACHE_DIR="$HOME/.cache/ccache/"
 alias dddbuild='catkin_make -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
 alias nvide='neovide --fork '
