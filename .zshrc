@@ -115,7 +115,12 @@ alias lg='lazygit'
 # export CC="/usr/lib/ccache/gcc"
 # export CXX="/usr/lib/ccache/g++"
 # export CCACHE_DIR="$HOME/.cache/ccache/"
-alias dddbuild='catkin_make -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+alias dddbuild='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+
+export PATH=/usr/local/cuda-12.6/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+source /opt/ros/noetic/setup.zsh
 
 alias nvide='neovide --fork '
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
@@ -124,7 +129,16 @@ dotfiles config --local status.showUntrackedFiles no
 . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# source <(fzf --zsh)
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
